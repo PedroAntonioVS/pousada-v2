@@ -1,0 +1,36 @@
+POUSADA BEIRA RIO — VERSÃO 7
+
+O QUE FOI MELHORADO
+- Mantida a agenda original, os 16 quartos, o cadastro, a busca e a disponibilidade.
+- Adicionado painel de configuração da sincronização na nuvem.
+- Integração com Supabase usando conta por e-mail e senha.
+- Atualizações recebidas em tempo real nos outros dispositivos conectados à mesma conta.
+- Importação de backup com validação básica de estrutura, quartos, datas e conflitos.
+- O armazenamento local continua funcionando como cópia local e como modo offline.
+
+COMO ATIVAR A SINCRONIZAÇÃO
+1. Crie um projeto em https://supabase.com/.
+2. No painel do projeto, abra SQL Editor e execute o arquivo supabase.sql.
+3. Em Project Settings / API, copie Project URL e a chave anon/public (NÃO use service_role).
+4. Abra o sistema, clique em Nuvem, informe URL, chave, e-mail e senha e clique em Criar conta.
+5. Se o Supabase exigir confirmação de e-mail, confirme a mensagem recebida. Depois volte ao sistema e clique em Nuvem > Entrar.
+6. Em cada computador/celular, instale/abra o mesmo site e entre com a mesma conta.
+
+SEGURANÇA
+- Nunca coloque a chave service_role no navegador. Use somente a chave anon/public.
+- A tabela permite acesso apenas a usuários autenticados. Como este projeto é dedicado à pousada, mantenha o acesso às contas sob controle.
+- Para impedir que qualquer pessoa crie uma conta no seu projeto, depois de criar a conta da pousada, desative novos cadastros em Authentication / Providers / Email (a opção pode variar no painel). Convide/crie usuários adicionais pelo painel se necessário.
+- A chave anon/public não é uma senha administrativa; a proteção dos dados depende das políticas RLS e da autenticação.
+
+IMPORTANTE SOBRE SINCRONIZAÇÃO
+- A sincronização só fica ativa depois de configurar o projeto Supabase e entrar com a mesma conta em todos os dispositivos.
+- O sistema mantém uma cópia local para continuar abrindo sem internet. Alterações offline ficam neste dispositivo e serão enviadas quando houver conexão e sessão válida.
+- A versão inicial sincroniza o conjunto de reservas como um único documento. Evite editar simultaneamente em dois dispositivos; em caso de alterações concorrentes, a última gravação enviada pode prevalecer.
+- Faça backups periódicos pelo botão Exportar, especialmente antes de importar dados ou fazer alterações importantes.
+- Não compartilhe a conta da pousada com pessoas que não devem ver os dados dos hóspedes.
+
+ARQUIVOS
+- index.html: aplicação.
+- manifest.json e ícones: instalação como aplicativo (PWA).
+- sw.js: cache/offline.
+- supabase.sql: tabela, política de acesso e publicação realtime.
